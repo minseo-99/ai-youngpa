@@ -1,0 +1,1726 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 시화 수업 포트폴리오 | 녹색성장과 함께하는 시 창작</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+        
+        :root {
+            --forest-deep: #1a3a2f;
+            --forest-mid: #2d5a4a;
+            --sage: #7a9e7e;
+            --sage-light: #a8c5ab;
+            --cream: #f8f6f1;
+            --cream-warm: #f5efe6;
+            --terracotta: #c4705a;
+            --terracotta-light: #e8a893;
+            --gold: #c9a96e;
+            --gold-light: #e8d5a8;
+            --charcoal: #2c2c2c;
+            --text-primary: #1a1a1a;
+            --text-secondary: #5a5a5a;
+            --text-muted: #8a8a8a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--cream);
+            color: var(--text-primary);
+            line-height: 1.7;
+            font-size: 16px;
+            overflow-x: hidden;
+        }
+
+        /* Typography */
+        h1, h2, h3 {
+            font-family: 'Nanum Myeongjo', serif;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        /* Organic Shape Background */
+        .organic-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .organic-shape {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.4;
+        }
+
+        .shape-1 {
+            width: 600px;
+            height: 600px;
+            background: var(--sage-light);
+            top: -200px;
+            right: -100px;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .shape-2 {
+            width: 400px;
+            height: 400px;
+            background: var(--gold-light);
+            bottom: 20%;
+            left: -100px;
+            animation: float 25s ease-in-out infinite reverse;
+        }
+
+        .shape-3 {
+            width: 300px;
+            height: 300px;
+            background: var(--terracotta-light);
+            top: 50%;
+            right: 10%;
+            animation: float 18s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(30px, -30px) rotate(5deg); }
+            66% { transform: translate(-20px, 20px) rotate(-5deg); }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(248, 246, 241, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            padding: 1rem 4rem;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.05);
+        }
+
+        .nav-logo {
+            font-family: 'Nanum Myeongjo', serif;
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--forest-deep);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-logo svg {
+            width: 28px;
+            height: 28px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-weight: 500;
+            position: relative;
+            padding: 0.25rem 0;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--terracotta);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--forest-deep);
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            padding: 8rem 4rem 4rem;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-content {
+            max-width: 600px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--forest-deep);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .hero-badge::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--sage-light);
+            border-radius: 50%;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: var(--forest-deep);
+            animation: fadeInUp 0.8s ease 0.1s backwards;
+        }
+
+        .hero h1 span {
+            display: block;
+            color: var(--terracotta);
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.8s ease 0.2s backwards;
+        }
+
+        .hero-meta {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease 0.3s backwards;
+        }
+
+        .hero-meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .hero-meta-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+        }
+
+        .hero-meta-value {
+            font-weight: 600;
+            color: var(--forest-deep);
+        }
+
+        .hero-visual {
+            position: relative;
+            height: 500px;
+            animation: fadeIn 1s ease 0.4s backwards;
+        }
+
+        .hero-image-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            border-radius: 2rem 8rem 2rem 8rem;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--sage-light) 0%, var(--forest-mid) 100%);
+        }
+
+        .hero-upload-area {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .hero-upload-area:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+        .hero-upload-icon {
+            width: 80px;
+            height: 80px;
+            border: 2px dashed rgba(255,255,255,0.5);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .hero-upload-text {
+            color: white;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .hero-uploaded-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-decoration {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            border: 3px solid var(--gold);
+            border-radius: 50%;
+            bottom: -20px;
+            left: -40px;
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.05); opacity: 0.8; }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Sections Common */
+        section {
+            padding: 6rem 4rem;
+        }
+
+        .section-header {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 2rem;
+            align-items: start;
+            margin-bottom: 4rem;
+        }
+
+        .section-number {
+            font-family: 'Nanum Myeongjo', serif;
+            font-size: 4rem;
+            font-weight: 800;
+            color: var(--sage-light);
+            line-height: 1;
+        }
+
+        .section-title-group h2 {
+            font-size: 2rem;
+            color: var(--forest-deep);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-subtitle {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Overview Section */
+        .overview {
+            background: white;
+        }
+
+        .overview-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .overview-card {
+            background: var(--cream);
+            padding: 2rem;
+            border-radius: 1.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .overview-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 0;
+            background: var(--terracotta);
+            transition: height 0.3s ease;
+        }
+
+        .overview-card:hover::before {
+            height: 100%;
+        }
+
+        .overview-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+        }
+
+        .overview-card-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--forest-deep);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        .overview-card h3 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+            font-family: 'Pretendard', sans-serif;
+            font-weight: 600;
+        }
+
+        .overview-card-content {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            min-height: 60px;
+        }
+
+        .overview-card-content[contenteditable]:focus {
+            outline: none;
+            background: rgba(196, 112, 90, 0.1);
+            border-radius: 4px;
+        }
+
+        /* Flow Diagram */
+        .flow-section {
+            background: var(--forest-deep);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .flow-section .section-number {
+            color: rgba(255,255,255,0.2);
+        }
+
+        .flow-section .section-title-group h2 {
+            color: white;
+        }
+
+        .flow-section .section-subtitle {
+            color: rgba(255,255,255,0.6);
+        }
+
+        .flow-container {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .flow-line {
+            position: absolute;
+            top: 50%;
+            left: 5%;
+            width: 90%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--sage), var(--gold), var(--terracotta));
+            transform: translateY(-50%);
+            z-index: 1;
+        }
+
+        .flow-step {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            width: 200px;
+        }
+
+        .flow-step-circle {
+            width: 80px;
+            height: 80px;
+            background: var(--cream);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-family: 'Nanum Myeongjo', serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--forest-deep);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+        }
+
+        .flow-step:hover .flow-step-circle {
+            transform: scale(1.1);
+            background: var(--gold);
+            color: white;
+        }
+
+        .flow-step-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .flow-step-desc {
+            font-size: 0.85rem;
+            opacity: 0.7;
+        }
+
+        /* Intent Section */
+        .intent-section {
+            background: var(--cream-warm);
+        }
+
+        .intent-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .intent-text {
+            font-size: 1.1rem;
+            line-height: 2;
+            color: var(--text-secondary);
+        }
+
+        .intent-text[contenteditable]:focus {
+            outline: none;
+            background: rgba(196, 112, 90, 0.1);
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        .intent-highlights {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .intent-highlight {
+            background: white;
+            padding: 1.5rem 2rem;
+            border-radius: 1rem;
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+
+        .intent-highlight-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--terracotta);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .intent-highlight h4 {
+            font-size: 0.9rem;
+            color: var(--forest-deep);
+            margin-bottom: 0.25rem;
+        }
+
+        .intent-highlight p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Process Section */
+        .process-section {
+            background: white;
+        }
+
+        .process-table {
+            background: var(--cream);
+            border-radius: 1.5rem;
+            overflow: hidden;
+        }
+
+        .process-row {
+            display: grid;
+            grid-template-columns: 120px 1fr 1fr 1fr;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .process-row:last-child {
+            border-bottom: none;
+        }
+
+        .process-row.header {
+            background: var(--forest-deep);
+            color: white;
+        }
+
+        .process-cell {
+            padding: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .process-row.header .process-cell {
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .process-stage {
+            background: var(--forest-mid);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+
+        .process-cell[contenteditable]:focus {
+            outline: none;
+            background: rgba(196, 112, 90, 0.15);
+        }
+
+        .prompt-box {
+            background: var(--charcoal);
+            color: var(--sage-light);
+            padding: 1rem;
+            border-radius: 8px;
+            font-family: 'D2Coding', monospace;
+            font-size: 0.85rem;
+            margin-top: 1rem;
+        }
+
+        /* Gallery Section */
+        .gallery-section {
+            background: linear-gradient(180deg, var(--cream) 0%, white 100%);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+        }
+
+        .gallery-item {
+            background: white;
+            border-radius: 1.5rem;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            transition: all 0.4s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+
+        .gallery-image-container {
+            height: 300px;
+            background: linear-gradient(135deg, var(--sage-light) 0%, var(--forest-mid) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gallery-upload-area {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-upload-area:hover {
+            background: rgba(0,0,0,0.1);
+        }
+
+        .gallery-uploaded-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .gallery-content {
+            padding: 2rem;
+        }
+
+        .gallery-student-tag {
+            display: inline-block;
+            background: var(--sage-light);
+            color: var(--forest-deep);
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .gallery-poem {
+            font-family: 'Nanum Myeongjo', serif;
+            font-size: 1.1rem;
+            line-height: 2;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            min-height: 100px;
+            white-space: pre-wrap;
+        }
+
+        .gallery-poem[contenteditable]:focus {
+            outline: none;
+            background: rgba(196, 112, 90, 0.1);
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        .gallery-comment {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            padding-top: 1rem;
+            border-top: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .add-gallery-btn {
+            grid-column: span 2;
+            background: transparent;
+            border: 2px dashed var(--sage);
+            border-radius: 1.5rem;
+            padding: 3rem;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            color: var(--sage);
+            transition: all 0.3s ease;
+        }
+
+        .add-gallery-btn:hover {
+            background: var(--sage-light);
+            border-color: var(--forest-mid);
+            color: var(--forest-deep);
+        }
+
+        /* Exhibition Section */
+        .exhibition-section {
+            background: var(--charcoal);
+            color: white;
+        }
+
+        .exhibition-section .section-number {
+            color: rgba(255,255,255,0.1);
+        }
+
+        .exhibition-section .section-title-group h2 {
+            color: white;
+        }
+
+        .exhibition-section .section-subtitle {
+            color: rgba(255,255,255,0.5);
+        }
+
+        .exhibition-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+        }
+
+        .exhibition-main-image {
+            height: 400px;
+            background: linear-gradient(135deg, var(--forest-mid) 0%, var(--sage) 100%);
+            border-radius: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .exhibition-details {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .exhibition-detail-card {
+            background: rgba(255,255,255,0.05);
+            padding: 1.5rem;
+            border-radius: 1rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .exhibition-detail-card h4 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .exhibition-detail-card p {
+            color: rgba(255,255,255,0.8);
+        }
+
+        .exhibition-detail-card p[contenteditable]:focus {
+            outline: none;
+            background: rgba(255,255,255,0.1);
+            padding: 0.5rem;
+            border-radius: 4px;
+        }
+
+        .exhibition-feedback {
+            margin-top: 3rem;
+        }
+
+        .exhibition-feedback h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .feedback-quotes {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .feedback-quote {
+            background: rgba(255,255,255,0.05);
+            padding: 1.5rem;
+            border-radius: 1rem;
+            position: relative;
+        }
+
+        .feedback-quote::before {
+            content: '"';
+            font-family: 'Nanum Myeongjo', serif;
+            font-size: 3rem;
+            color: var(--terracotta);
+            position: absolute;
+            top: 0.5rem;
+            left: 1rem;
+            opacity: 0.5;
+        }
+
+        .feedback-quote p {
+            padding-top: 1.5rem;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .feedback-quote-author {
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            color: var(--gold);
+        }
+
+        /* Reflection Section */
+        .reflection-section {
+            background: white;
+        }
+
+        .reflection-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .reflection-card {
+            background: var(--cream);
+            padding: 2.5rem;
+            border-radius: 1.5rem;
+            position: relative;
+        }
+
+        .reflection-card.success {
+            border-left: 4px solid var(--sage);
+        }
+
+        .reflection-card.improve {
+            border-left: 4px solid var(--terracotta);
+        }
+
+        .reflection-card.tips {
+            border-left: 4px solid var(--gold);
+        }
+
+        .reflection-card.episode {
+            border-left: 4px solid var(--forest-mid);
+        }
+
+        .reflection-card-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .reflection-card-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .reflection-card.success .reflection-card-icon { background: var(--sage); }
+        .reflection-card.improve .reflection-card-icon { background: var(--terracotta); }
+        .reflection-card.tips .reflection-card-icon { background: var(--gold); }
+        .reflection-card.episode .reflection-card-icon { background: var(--forest-mid); }
+
+        .reflection-card h3 {
+            font-size: 1.1rem;
+            color: var(--forest-deep);
+        }
+
+        .reflection-card-content {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+
+        .reflection-card-content[contenteditable]:focus {
+            outline: none;
+            background: rgba(196, 112, 90, 0.1);
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--forest-deep);
+            color: white;
+            padding: 3rem 4rem;
+            text-align: center;
+        }
+
+        footer p {
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        .save-indicator {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--forest-deep);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 2rem;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .save-indicator.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Print Styles */
+        @media print {
+            nav, .save-indicator, .organic-bg {
+                display: none !important;
+            }
+            section {
+                page-break-inside: avoid;
+            }
+            .hero {
+                min-height: auto;
+                padding-top: 2rem;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            nav {
+                padding: 1rem 2rem;
+            }
+            .nav-links {
+                display: none;
+            }
+            section {
+                padding: 4rem 2rem;
+            }
+            .hero {
+                grid-template-columns: 1fr;
+                padding: 6rem 2rem 2rem;
+            }
+            .hero-visual {
+                height: 300px;
+            }
+            .overview-grid {
+                grid-template-columns: 1fr;
+            }
+            .flow-container {
+                flex-wrap: wrap;
+                gap: 2rem;
+            }
+            .flow-line {
+                display: none;
+            }
+            .intent-content {
+                grid-template-columns: 1fr;
+            }
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            .add-gallery-btn {
+                grid-column: span 1;
+            }
+            .exhibition-grid {
+                grid-template-columns: 1fr;
+            }
+            .feedback-quotes {
+                grid-template-columns: 1fr;
+            }
+            .reflection-grid {
+                grid-template-columns: 1fr;
+            }
+            .process-row {
+                grid-template-columns: 1fr;
+            }
+            .process-row.header {
+                display: none;
+            }
+            .process-stage {
+                padding: 1rem;
+                border-radius: 8px 8px 0 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Organic Background -->
+    <div class="organic-bg">
+        <div class="organic-shape shape-1"></div>
+        <div class="organic-shape shape-2"></div>
+        <div class="organic-shape shape-3"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="nav">
+        <div class="nav-logo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                <path d="M2 17l10 5 10-5"/>
+                <path d="M2 12l10 5 10-5"/>
+            </svg>
+            에듀테크 포트폴리오
+        </div>
+        <ul class="nav-links">
+            <li><a href="#overview" class="active">수업 개요</a></li>
+            <li><a href="#intent">설계 의도</a></li>
+            <li><a href="#process">수업 흐름</a></li>
+            <li><a href="#gallery">작품 갤러리</a></li>
+            <li><a href="#exhibition">전시 활동</a></li>
+            <li><a href="#reflection">수업 성찰</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <div class="hero-badge">AI 활용 문학 수업</div>
+            <h1>
+                녹색성장과 함께하는
+                <span>AI 시화 창작 프로젝트</span>
+            </h1>
+            <p class="hero-description">
+                AI 챗봇과 이미지 생성 도구를 활용하여 환경 주제의 시를 창작하고,
+                시화 작품으로 완성하는 융합 수업 사례입니다.
+            </p>
+            <div class="hero-meta">
+                <div class="hero-meta-item">
+                    <span class="hero-meta-label">대상</span>
+                    <span class="hero-meta-value">중학교 1학년</span>
+                </div>
+                <div class="hero-meta-item">
+                    <span class="hero-meta-label">교과</span>
+                    <span class="hero-meta-value">국어</span>
+                </div>
+                <div class="hero-meta-item">
+                    <span class="hero-meta-label">차시</span>
+                    <span class="hero-meta-value">4차시</span>
+                </div>
+                <div class="hero-meta-item">
+                    <span class="hero-meta-label">교사</span>
+                    <span class="hero-meta-value">고민서</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="hero-image-container" onclick="triggerUpload('hero-image')">
+                <div class="hero-upload-area" id="hero-upload">
+                    <div class="hero-upload-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                            <polyline points="17 8 12 3 7 8"/>
+                            <line x1="12" y1="3" x2="12" y2="15"/>
+                        </svg>
+                    </div>
+                    <span class="hero-upload-text">대표 이미지 업로드</span>
+                </div>
+                <img class="hero-uploaded-image" id="hero-preview" style="display:none;">
+            </div>
+            <div class="hero-decoration"></div>
+            <input type="file" id="hero-image" accept="image/*" style="display:none;" onchange="handleUpload(this, 'hero-preview', 'hero-upload')">
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section class="overview" id="overview">
+        <div class="section-header">
+            <span class="section-number">01</span>
+            <div class="section-title-group">
+                <h2>수업 개요</h2>
+                <p class="section-subtitle">독자가 수업의 전체 그림을 빠르게 파악할 수 있도록 핵심 정보를 제시합니다</p>
+            </div>
+        </div>
+        <div class="overview-grid">
+            <div class="overview-card">
+                <div class="overview-card-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+                        <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+                    </svg>
+                </div>
+                <h3>수업명</h3>
+                <div class="overview-card-content" contenteditable="true">AI와 함께 쓰는 녹색성장 시화 프로젝트</div>
+            </div>
+            <div class="overview-card">
+                <div class="overview-card-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                        <circle cx="9" cy="7" r="4"/>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                    </svg>
+                </div>
+                <h3>대상</h3>
+                <div class="overview-card-content" contenteditable="true">중학교 1학년 O반 (25명)</div>
+            </div>
+            <div class="overview-card">
+                <div class="overview-card-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <polyline points="12 6 12 12 16 14"/>
+                    </svg>
+                </div>
+                <h3>수업 차시</h3>
+                <div class="overview-card-content" contenteditable="true">총 4차시 (각 45분)</div>
+            </div>
+            <div class="overview-card">
+                <div class="overview-card-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                    </svg>
+                </div>
+                <h3>성취기준</h3>
+                <div class="overview-card-content" contenteditable="true">[9국05-05] 비유와 상징의 표현 효과 이해<br>[9국05-10] 문학이 삶에 미치는 영향 이해</div>
+            </div>
+            <div class="overview-card">
+                <div class="overview-card-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                        <line x1="8" y1="21" x2="16" y2="21"/>
+                        <line x1="12" y1="17" x2="12" y2="21"/>
+                    </svg>
+                </div>
+                <h3>AI 도구</h3>
+                <div class="overview-card-content" contenteditable="true">• ChatGPT / 뤼튼 (시 창작)<br>• Canva AI (이미지 생성)</div>
+            </div>
+            <div class="overview-card">
+                <div class="overview-card-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 20h9"/>
+                        <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+                    </svg>
+                </div>
+                <h3>핵심 역량</h3>
+                <div class="overview-card-content" contenteditable="true">창의적 사고 역량, 심미적 감성 역량, 디지털 리터러시</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Flow Section -->
+    <section class="flow-section">
+        <div class="section-header">
+            <span class="section-number">◎</span>
+            <div class="section-title-group">
+                <h2>수업 흐름</h2>
+                <p class="section-subtitle">4단계로 구성된 프로젝트 진행 순서</p>
+            </div>
+        </div>
+        <div class="flow-container">
+            <div class="flow-line"></div>
+            <div class="flow-step">
+                <div class="flow-step-circle">1</div>
+                <div class="flow-step-title">주제 탐색</div>
+                <div class="flow-step-desc">환경 문제 인식<br>녹색성장 개념 이해</div>
+            </div>
+            <div class="flow-step">
+                <div class="flow-step-circle">2</div>
+                <div class="flow-step-title">AI 시 창작</div>
+                <div class="flow-step-desc">프롬프트 작성<br>시 초안 생성 및 수정</div>
+            </div>
+            <div class="flow-step">
+                <div class="flow-step-circle">3</div>
+                <div class="flow-step-title">시화 제작</div>
+                <div class="flow-step-desc">Canva AI 이미지 생성<br>시화 작품 완성</div>
+            </div>
+            <div class="flow-step">
+                <div class="flow-step-circle">4</div>
+                <div class="flow-step-title">발표·전시</div>
+                <div class="flow-step-desc">작품 발표 및 감상<br>교실 전시회 운영</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Intent Section -->
+    <section class="intent-section" id="intent">
+        <div class="section-header">
+            <span class="section-number">02</span>
+            <div class="section-title-group">
+                <h2>수업 설계 의도</h2>
+                <p class="section-subtitle">왜 이 수업을 기획했는지 교육적 맥락과 의미를 설명합니다</p>
+            </div>
+        </div>
+        <div class="intent-content">
+            <div class="intent-text" contenteditable="true">본 수업은 2022 개정 교육과정의 '디지털·AI 소양' 함양과 범교과 학습 주제인 '환경·지속가능발전교육'을 국어과 문학 영역과 연계하여 설계하였습니다.
+
+학생들이 AI 도구를 단순히 결과물 생성 도구가 아닌 '창작의 협력자'로 인식하도록 유도하며, 최종 창작물에 대한 주체성을 강조합니다. 비유와 상징이라는 문학적 표현 기법을 환경 주제와 결합함으로써, 학생들은 추상적 개념을 구체적 이미지로 형상화하는 경험을 하게 됩니다.
+
+특히 AI 윤리교육을 병행하여 "AI는 도구, 창작자는 나"라는 인식을 심어주고, 생성형 AI의 한계와 가능성을 비판적으로 탐구하는 기회를 제공합니다.</div>
+            <div class="intent-highlights">
+                <div class="intent-highlight">
+                    <div class="intent-highlight-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h4>환경 감수성 함양</h4>
+                        <p>녹색성장 주제를 통해 환경 문제에 대한 공감과 실천 의지 고취</p>
+                    </div>
+                </div>
+                <div class="intent-highlight">
+                    <div class="intent-highlight-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="3"/>
+                            <path d="M12 1v6m0 6v6m11-7h-6m-6 0H1"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h4>AI 리터러시</h4>
+                        <p>생성형 AI의 원리 이해와 비판적 활용 능력 배양</p>
+                    </div>
+                </div>
+                <div class="intent-highlight">
+                    <div class="intent-highlight-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/>
+                            <polyline points="14 2 14 8 20 8"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h4>문학적 표현력</h4>
+                        <p>비유와 상징 기법을 활용한 창의적 시 창작 역량 신장</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process-section" id="process">
+        <div class="section-header">
+            <span class="section-number">03</span>
+            <div class="section-title-group">
+                <h2>단계별 수업 흐름</h2>
+                <p class="section-subtitle">다른 선생님들이 참고하여 재현할 수 있도록 구체적인 활동을 안내합니다</p>
+            </div>
+        </div>
+        <div class="process-table">
+            <div class="process-row header">
+                <div class="process-cell">단계</div>
+                <div class="process-cell">활동 내용</div>
+                <div class="process-cell">AI 활용 방법</div>
+                <div class="process-cell">유의점/피드백</div>
+            </div>
+            <div class="process-row">
+                <div class="process-cell process-stage">도입<br>(1차시)</div>
+                <div class="process-cell" contenteditable="true">• 환경 관련 영상 시청<br>• 녹색성장 개념 브레인스토밍<br>• 비유법, 상징 복습</div>
+                <div class="process-cell" contenteditable="true">• 환경 키워드 연상 활동<br>• 생성형 AI 소개</div>
+                <div class="process-cell" contenteditable="true">• 학생 경험과 연결하여 동기 유발<br>• AI 윤리 교육 병행</div>
+            </div>
+            <div class="process-row">
+                <div class="process-cell process-stage">전개 1<br>(2차시)</div>
+                <div class="process-cell" contenteditable="true">• AI 챗봇으로 시 초안 생성<br>• 프롬프트 작성 연습<br>• 생성된 시 검토 및 수정
+                <div class="prompt-box">💡 프롬프트 예시<br>"환경 보호를 주제로 은유법을 활용한 짧은 시를 써줘. 4~6행으로 부드러운 느낌으로 작성해줘."</div></div>
+                <div class="process-cell" contenteditable="true">• ChatGPT 또는 뤼튼 활용<br>• 프롬프트 가이드 제공<br>• 결과물 비교 분석</div>
+                <div class="process-cell" contenteditable="true">• 무작위 질문 방지를 위한 템플릿 제공<br>• AI 결과를 그대로 사용하지 않도록 지도</div>
+            </div>
+            <div class="process-row">
+                <div class="process-cell process-stage">전개 2<br>(3차시)</div>
+                <div class="process-cell" contenteditable="true">• 시 다듬기 및 완성<br>• Canva AI로 배경 이미지 생성<br>• 시화 레이아웃 구성</div>
+                <div class="process-cell" contenteditable="true">• Canva AI 이미지 생성<br>• 시의 감정/상징과 연계된 키워드 입력</div>
+                <div class="process-cell" contenteditable="true">• 이미지는 장식이 아닌 상징 구현임을 강조<br>• 디지털 미숙 학생 개별 지원</div>
+            </div>
+            <div class="process-row">
+                <div class="process-cell process-stage">정리<br>(4차시)</div>
+                <div class="process-cell" contenteditable="true">• 시화 작품 발표<br>• 상호 감상 및 피드백<br>• 전시회 준비</div>
+                <div class="process-cell" contenteditable="true">• 패들렛으로 온라인 갤러리 운영<br>• 댓글로 피드백 공유</div>
+                <div class="process-cell" contenteditable="true">• 긍정적 언어로 감상 중심 피드백 유도<br>• 상호존중 문화 강조</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section" id="gallery">
+        <div class="section-header">
+            <span class="section-number">04</span>
+            <div class="section-title-group">
+                <h2>학생 작품 갤러리</h2>
+                <p class="section-subtitle">수업 결과물을 시각적으로 보여주어 수업의 효과를 입증합니다</p>
+            </div>
+        </div>
+        <div class="gallery-grid" id="gallery-grid">
+            <div class="gallery-item">
+                <div class="gallery-image-container" onclick="triggerUpload('gallery-image-1')">
+                    <div class="gallery-upload-area" id="gallery-upload-1">
+                        <div class="hero-upload-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                                <circle cx="8.5" cy="8.5" r="1.5"/>
+                                <polyline points="21 15 16 10 5 21"/>
+                            </svg>
+                        </div>
+                        <span class="hero-upload-text">시화 이미지 업로드</span>
+                    </div>
+                    <img class="gallery-uploaded-image" id="gallery-preview-1" style="display:none;">
+                </div>
+                <input type="file" id="gallery-image-1" accept="image/*" style="display:none;" onchange="handleUpload(this, 'gallery-preview-1', 'gallery-upload-1')">
+                <div class="gallery-content">
+                    <span class="gallery-student-tag" contenteditable="true">1학년 ○○○</span>
+                    <div class="gallery-poem" contenteditable="true">푸른 숲이 속삭인다
+내일의 숨결을 위해
+오늘 한 그루를 심자고
+
+바람이 전하는 약속
+초록빛 미래로 가는 길</div>
+                    <div class="gallery-comment" contenteditable="true">💬 은유법을 활용하여 숲을 '숨결'과 연결한 점이 인상적입니다.</div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-image-container" onclick="triggerUpload('gallery-image-2')">
+                    <div class="gallery-upload-area" id="gallery-upload-2">
+                        <div class="hero-upload-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                                <circle cx="8.5" cy="8.5" r="1.5"/>
+                                <polyline points="21 15 16 10 5 21"/>
+                            </svg>
+                        </div>
+                        <span class="hero-upload-text">시화 이미지 업로드</span>
+                    </div>
+                    <img class="gallery-uploaded-image" id="gallery-preview-2" style="display:none;">
+                </div>
+                <input type="file" id="gallery-image-2" accept="image/*" style="display:none;" onchange="handleUpload(this, 'gallery-preview-2', 'gallery-upload-2')">
+                <div class="gallery-content">
+                    <span class="gallery-student-tag" contenteditable="true">1학년 △△△</span>
+                    <div class="gallery-poem" contenteditable="true">지구는 아프다고 말한다
+연기 속에서 기침하며
+빙하가 눈물을 흘린다
+
+우리의 손이 치료제가 될 때
+지구는 다시 웃을 것이다</div>
+                    <div class="gallery-comment" contenteditable="true">💬 의인법을 통해 지구의 아픔을 감각적으로 표현했습니다.</div>
+                </div>
+            </div>
+            <button class="add-gallery-btn" onclick="addGalleryItem()">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"/>
+                    <line x1="12" y1="8" x2="12" y2="16"/>
+                    <line x1="8" y1="12" x2="16" y2="12"/>
+                </svg>
+                작품 추가하기
+            </button>
+        </div>
+    </section>
+
+    <!-- Exhibition Section -->
+    <section class="exhibition-section" id="exhibition">
+        <div class="section-header">
+            <span class="section-number">05</span>
+            <div class="section-title-group">
+                <h2>전시 활동 소개</h2>
+                <p class="section-subtitle">수업이 교실을 넘어 학교 공동체와 공유되었음을 보여줍니다</p>
+            </div>
+        </div>
+        <div class="exhibition-grid">
+            <div class="exhibition-main-image" onclick="triggerUpload('exhibition-image')">
+                <div class="gallery-upload-area" id="exhibition-upload">
+                    <div class="hero-upload-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                            <circle cx="8.5" cy="8.5" r="1.5"/>
+                            <polyline points="21 15 16 10 5 21"/>
+                        </svg>
+                    </div>
+                    <span class="hero-upload-text">전시 전경 사진 업로드</span>
+                </div>
+                <img class="gallery-uploaded-image" id="exhibition-preview" style="display:none;">
+            </div>
+            <input type="file" id="exhibition-image" accept="image/*" style="display:none;" onchange="handleUpload(this, 'exhibition-preview', 'exhibition-upload')">
+            <div class="exhibition-details">
+                <div class="exhibition-detail-card">
+                    <h4>전시 장소</h4>
+                    <p contenteditable="true">1학년 복도 게시판 및 국어과 교실</p>
+                </div>
+                <div class="exhibition-detail-card">
+                    <h4>전시 기간</h4>
+                    <p contenteditable="true">2025년 O월 O일 ~ O월 O일 (2주간)</p>
+                </div>
+                <div class="exhibition-detail-card">
+                    <h4>전시 방법</h4>
+                    <p contenteditable="true">• 복도 게시판 전시 (인쇄물)<br>• 패들렛 온라인 갤러리 운영<br>• QR코드로 디지털 감상 연계</p>
+                </div>
+                <div class="exhibition-detail-card">
+                    <h4>연계 활동</h4>
+                    <p contenteditable="true">• 최고의 시화 투표<br>• 감상 스티커 부착<br>• 온라인 댓글 피드백</p>
+                </div>
+            </div>
+        </div>
+        <div class="exhibition-feedback">
+            <h3>관람 반응</h3>
+            <div class="feedback-quotes">
+                <div class="feedback-quote">
+                    <p contenteditable="true">AI로 이런 작품을 만들 수 있다니 신기해요. 친구들의 환경에 대한 생각이 담겨있어서 더 와닿았어요.</p>
+                    <div class="feedback-quote-author" contenteditable="true">— 학생 관람 반응</div>
+                </div>
+                <div class="feedback-quote">
+                    <p contenteditable="true">학생들이 AI를 단순히 사용하는 것이 아니라 비판적으로 활용하는 모습이 인상적이었습니다.</p>
+                    <div class="feedback-quote-author" contenteditable="true">— 동료 교사 피드백</div>
+                </div>
+                <div class="feedback-quote">
+                    <p contenteditable="true">아이가 집에서도 환경 문제에 대해 이야기하더라고요. 의미 있는 수업이었던 것 같습니다.</p>
+                    <div class="feedback-quote-author" contenteditable="true">— 학부모 반응</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reflection Section -->
+    <section class="reflection-section" id="reflection">
+        <div class="section-header">
+            <span class="section-number">06</span>
+            <div class="section-title-group">
+                <h2>수업 성찰 및 Tip</h2>
+                <p class="section-subtitle">실천 경험을 바탕으로 한 노하우를 공유합니다</p>
+            </div>
+        </div>
+        <div class="reflection-grid">
+            <div class="reflection-card success">
+                <div class="reflection-card-header">
+                    <div class="reflection-card-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                            <polyline points="22 4 12 14.01 9 11.01"/>
+                        </svg>
+                    </div>
+                    <h3>잘된 점</h3>
+                </div>
+                <div class="reflection-card-content" contenteditable="true">• AI 도구 활용에 대한 학생들의 흥미와 참여도가 높았음
+• 환경 주제와 문학적 표현의 결합으로 깊이 있는 창작 활동 유도
+• 수준별 차별화 지도로 모든 학생이 완성도 있는 작품 산출
+• "AI는 도구, 창작자는 나"라는 인식이 자연스럽게 형성됨</div>
+            </div>
+            <div class="reflection-card improve">
+                <div class="reflection-card-header">
+                    <div class="reflection-card-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <line x1="12" y1="8" x2="12" y2="12"/>
+                            <line x1="12" y1="16" x2="12.01" y2="16"/>
+                        </svg>
+                    </div>
+                    <h3>아쉬운 점 및 개선 방향</h3>
+                </div>
+                <div class="reflection-card-content" contenteditable="true">• 4차시가 다소 빠듯함 → 5~6차시로 확대 권장
+• 일부 학생의 디지털 도구 미숙으로 활동 지연
+→ 사전 도구 교육 또는 도우미 배정 필요
+• 시 창작보다 이미지 생성에 집중하는 경향
+→ 문학적 표현 중심 피드백 강화</div>
+            </div>
+            <div class="reflection-card tips">
+                <div class="reflection-card-header">
+                    <div class="reflection-card-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+                            <line x1="12" y1="17" x2="12.01" y2="17"/>
+                        </svg>
+                    </div>
+                    <h3>동료 교사를 위한 실천 Tip</h3>
+                </div>
+                <div class="reflection-card-content" contenteditable="true">💡 프롬프트 가이드를 반드시 사전에 제작하세요
+💡 AI 결과물 수정 과정을 평가에 포함하면 주체적 창작 태도가 강화됩니다
+💡 패들렛 등 온라인 갤러리를 활용하면 상호 감상이 활발해집니다
+💡 환경 외에도 '평화', '다문화', '인권' 등 다양한 범교과 주제로 확장 가능</div>
+            </div>
+            <div class="reflection-card episode">
+                <div class="reflection-card-header">
+                    <div class="reflection-card-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                        </svg>
+                    </div>
+                    <h3>학생 성장 에피소드</h3>
+                </div>
+                <div class="reflection-card-content" contenteditable="true">평소 국어 수업에 소극적이던 ○○ 학생이 AI 도구를 활용한 창작 활동에서 눈에 띄게 적극적으로 변화했습니다. "AI가 도와줘서 처음으로 시를 끝까지 완성했어요"라며 뿌듯해하는 모습이 인상적이었습니다. 특히 자신이 수정한 부분을 친구들에게 설명하며 창작자로서의 자부심을 보여주었습니다.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 에듀테크 교사 연구회 | AI와 함께하는 창의적 수업 설계</p>
+    </footer>
+
+    <!-- Save Indicator -->
+    <div class="save-indicator" id="save-indicator">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+            <polyline points="22 4 12 14.01 9 11.01"/>
+        </svg>
+        자동 저장됨
+    </div>
+
+    <script>
+        // Navigation scroll effect
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Active nav link
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-links a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                if (window.scrollY >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Image upload handlers
+        function triggerUpload(inputId) {
+            document.getElementById(inputId).click();
+        }
+
+        function handleUpload(input, previewId, uploadAreaId) {
+            const file = input.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const preview = document.getElementById(previewId);
+                    const uploadArea = document.getElementById(uploadAreaId);
+                    preview.src = e.target.result;
+                    preview.style.display = 'block';
+                    uploadArea.style.display = 'none';
+                    saveToLocalStorage();
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // Gallery counter
+        let galleryCounter = 2;
+
+        function addGalleryItem() {
+            galleryCounter++;
+            const grid = document.getElementById('gallery-grid');
+            const btn = grid.querySelector('.add-gallery-btn');
+            
+            const newItem = document.createElement('div');
+            newItem.className = 'gallery-item';
+            newItem.innerHTML = `
+                <div class="gallery-image-container" onclick="triggerUpload('gallery-image-${galleryCounter}')">
+                    <div class="gallery-upload-area" id="gallery-upload-${galleryCounter}">
+                        <div class="hero-upload-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                                <circle cx="8.5" cy="8.5" r="1.5"/>
+                                <polyline points="21 15 16 10 5 21"/>
+                            </svg>
+                        </div>
+                        <span class="hero-upload-text">시화 이미지 업로드</span>
+                    </div>
+                    <img class="gallery-uploaded-image" id="gallery-preview-${galleryCounter}" style="display:none;">
+                </div>
+                <input type="file" id="gallery-image-${galleryCounter}" accept="image/*" style="display:none;" onchange="handleUpload(this, 'gallery-preview-${galleryCounter}', 'gallery-upload-${galleryCounter}')">
+                <div class="gallery-content">
+                    <span class="gallery-student-tag" contenteditable="true">1학년 □□□</span>
+                    <div class="gallery-poem" contenteditable="true">여기에 학생의 시를 입력하세요</div>
+                    <div class="gallery-comment" contenteditable="true">💬 작품에 대한 해설을 입력하세요</div>
+                </div>
+            `;
+            
+            grid.insertBefore(newItem, btn);
+        }
+
+        // Auto-save functionality
+        function saveToLocalStorage() {
+            const editableElements = document.querySelectorAll('[contenteditable="true"]');
+            const content = {};
+            
+            editableElements.forEach((el, index) => {
+                content[`editable_${index}`] = el.innerHTML;
+            });
+
+            // Save images
+            const images = document.querySelectorAll('.hero-uploaded-image, .gallery-uploaded-image');
+            images.forEach((img, index) => {
+                if (img.src && img.style.display !== 'none') {
+                    content[`image_${index}`] = img.src;
+                }
+            });
+
+            localStorage.setItem('edutech_portfolio_v2', JSON.stringify(content));
+            showSaveIndicator();
+        }
+
+        function loadFromLocalStorage() {
+            const saved = localStorage.getItem('edutech_portfolio_v2');
+            if (saved) {
+                const content = JSON.parse(saved);
+                const editableElements = document.querySelectorAll('[contenteditable="true"]');
+                
+                editableElements.forEach((el, index) => {
+                    if (content[`editable_${index}`]) {
+                        el.innerHTML = content[`editable_${index}`];
+                    }
+                });
+
+                // Load images
+                const images = document.querySelectorAll('.hero-uploaded-image, .gallery-uploaded-image');
+                images.forEach((img, index) => {
+                    if (content[`image_${index}`]) {
+                        img.src = content[`image_${index}`];
+                        img.style.display = 'block';
+                        const uploadArea = img.previousElementSibling;
+                        if (uploadArea) uploadArea.style.display = 'none';
+                    }
+                });
+            }
+        }
+
+        function showSaveIndicator() {
+            const indicator = document.getElementById('save-indicator');
+            indicator.classList.add('show');
+            setTimeout(() => {
+                indicator.classList.remove('show');
+            }, 2000);
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            loadFromLocalStorage();
+            
+            // Auto-save every 30 seconds
+            setInterval(saveToLocalStorage, 30000);
+            
+            // Save on content change
+            document.querySelectorAll('[contenteditable="true"]').forEach(el => {
+                el.addEventListener('blur', saveToLocalStorage);
+            });
+        });
+    </script>
+</body>
+</html>
